@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Server Side Media Queries</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <script type="text/javascript">
+   //Set width of screen in a cookie
+    (function (w, d) {
+        //set width to vpw
+        var e = d.documentElement, g = d.getElementsByTagName('body')[0], vpw = w.innerWidth || e.clientWidth || g.clientWidth;
+        var bp;
+
+        //define the breakpoints by name and size
+        if (vpw >= 1024) {
+            vpw = 1024;
+            bp = "w";
+        } else if (vpw >= 768) {
+            bp = "m";
+        } else {
+            bp = "n";
+        }// Set devicePixelRatio for use on retina screens
+        var dpr = 1;
+        if(window.devicePixelRatio !== undefined) dpr = window.devicePixelRatio;
+
+        // Set a cookie with the client side capabilities. 
+        // There is two specified groups which can be used to scale images to a predefined width in pixels using:
+        // http://<SERVICE_URL>/gn_<GROUPNAME>/<IMG_URL>
+        // Make sure to use your own domain
+        var ccapDate = new Date()
+        ccapDate.setFullYear(ccapDate.getFullYear() + 1);
+        d.cookie = 'RESS=vpw.' + vpw + '|bp.' + bp + '|g.groupName1.320' + '|g.groupName2.640' + '|dpr.' + dpr + '; domain=.wew.io';
+    }(window, document));
+
+        </script>
+        
+        <!--The css file containing the extended media queries is refered to like this:-->
+        <link rel="stylesheet" href="http://css.demo.wew.io/http://demo.wew.io/Hello-World/css/style.css">
+
+
+</head>
+<body>
+<div id="container">
+    <header>
+    <h1>Hello World</h1>
+    </header>
+    <div id="main" role="main">
+    <h2>The Markup</h2>
+    <p>The markup you are in charge of. Whether it comes from a CMS of some sort or if it's hand crafted by you.</p>
+    <h2>The Images</h2>
+    <p>All images are pulled through the Image Server similar to a proxy or a CDN.</p>
+    <div id ="imgcontainer">
+            <img id="wewImg" src="http://img.demo.wew.io/vpw_1024/bp_w/pc/w_20/m_70/n_98/http://farm1.staticflickr.com/154/369525606_c77b69e92c_o_d.jpg" alt="Butterfly" alt="butterfly"/>
+    </div>
+    <h2>The CSS</h2>
+    <p>CSS is processed and optimized serverside before following the same model as images</p>
+    <div class="demo">Hello World!</div>
+    <h2>The JavaScript</h2>
+    <p>Device capabilities are made available for your JavaScript.</p>
+    <p id ="dd"></p>
+    
+</div>
+    <footer>
+
+    </footer>
+</div> <!--! end of #container -->
+
+        <script src="js/wew.js"></script>
+        <script type="text/javascript">
+            /* init */
+            var WEW = WEW || {};
+            WEW.opts ={"ttl":"10000","appID":"demo"};
+            var w=new wew(WEW);
+            w.getSet("myset",cb);
+
+            function cb(c){
+                document.getElementById('dd').innerHTML = JSON.stringify(c);
+            }
+        </script>
+</body>
+</html>

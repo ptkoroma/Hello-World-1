@@ -1,0 +1,118 @@
+
+/************Reset**************/
+html, body, div, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, ol, ul, li, form, fieldset, legend, label, table, header, footer, nav, section { 
+	margin: 0; 
+	padding: 0;
+	border: 0;
+} 
+ol, ul { 
+	list-style: none; 
+}
+header, footer, nav, section, article, hgroup, figure {
+	display: block;	
+}
+legend {
+	display: none;
+}
+/************End Reset**************/
+
+/************Global**************/
+
+h1{
+	text-align: center;
+	text-shadow: rgb(190, 190, 190) 0px 1px 0px, #555 0px -1px ;
+	color:#333;
+}
+
+body { 
+	font: 100%/1.5 'Gill Sans', 'Droid Sans', 'Calibri', 'Lucida Grande', 'Trebuchet MS', 'Helvetica Neue', 'Arial', sans-serif; 
+	color: #000;
+	background: url(http://demo.wew.io/Hello-World/img/linen_texture.png) #fff; 
+	text-align: center;
+}
+#main{
+	width:70%;
+	margin: auto;
+	padding: 10%;
+	  background-color: rgba(255,255,255,0.7);
+    border: 1px solid #777;
+}
+img{
+	max-width: 100%;
+}
+
+/*Note that defined size here need to correspond with the sizes in the image tag for optimal effect*/
+@media only screen and (max-width: 320px) {
+	#imgcontainer{
+		width:98%;
+	}	
+}
+@media only screen and (min-width: 320px) {
+	#imgcontainer{
+		width: 70%;
+	}	
+}
+
+@media only screen and (min-width: 1024px) {
+	#imgcontainer{
+		width: 20%;
+	}	
+}
+
+
+
+ /*In development mode comments will be visible*/
+
+.demo{
+  display: block;
+}  
+
+/*For Nokia devices; red bold text*/
+  @media all and (-wew-brand-name: Nokia){            
+    .demo{
+      color:red;
+      font-weight: bold;
+    }      
+  }
+
+/*For touch screen devices*/
+  @media all and (-wew-pointing_method: touchscreen){            
+    .demo{
+      border: 5px solid maroon;
+    }      
+  }
+
+/*For devices with Android OS, yellow background*/
+   @media all and (-wew-device-os: Android) {
+    .demo{
+      background: yellow;
+    }
+  }
+
+/*For devices with minimum 320px wide browser secreen and with touch screen*/
+@media screen and (min-device-width: 320px) and (-wew-pointing-method: touchscreen) {
+    .demo{
+      /*The service will only keep the relevant prefixes*/
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      border-radius: 20px;
+      background-color:#E3A20B;
+    }  
+}
+
+/*This standard query will be remoced for devices never in target of 1200 px.*/
+@media all and (min-width: 1200px) {
+    .demo{
+      font-size: 4em;
+    }
+}
+
+
+/*This will evaluate your custom capability as defined on whateverweb.com.*/
+@media all and (-wew-your-magic-feature: true) {
+    .demo{
+      font-size: 14em;
+    }
+}
+
+
